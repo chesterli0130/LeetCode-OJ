@@ -33,43 +33,42 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		
-		if(root==null)
-			return result;
-			
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-		int current = 1;
-		int next = 0;
-		queue.add(root);
-		
-		while(!queue.isEmpty()){
-			TreeNode n = queue.remove();
-			list.add(n.val);
-			
-			if(n.left != null){
-				queue.add(n.left);
-				next++;
-			}
-			
-			if(n.right != null){
-				queue.add(n.right);
-				next++;
-			}
-			
-			current--;
-			if(current==0){
-				current = next;
-				next = 0;
-				result.add(list);
-				list = new ArrayList<Integer>();
-			}
-		}
-		
-		return result;
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        
+        if(root==null)
+            return result;
+            
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        int current = 1;
+        int next = 0;
+        queue.add(root);
+        
+        while(!queue.isEmpty()){
+            TreeNode n = queue.remove();
+            list.add(n.val);
+            
+            if(n.left != null){
+                queue.add(n.left);
+                next++;
+            }
+            
+            if(n.right != null){
+                queue.add(n.right);
+                next++;
+            }
+            
+            current--;
+            if(current==0){
+                current = next;
+                next = 0;
+                result.add(list);
+                list = new ArrayList<Integer>();
+            }
+        }
+        
+        return result;
     }
 }
-
 
 
