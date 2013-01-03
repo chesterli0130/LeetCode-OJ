@@ -34,32 +34,31 @@ public class Solution {
             return 0;
         
         boolean neg=false;
-      long num=0;
-		int index=0;
-		
-		str = str.trim();
-		if(str.charAt(index)=='-'){
-			index++;
-			neg=true;
-		}else if(str.charAt(index)=='+'){
-    	    index++;   
-		}
-		
-		for(; index<str.length(); index++){
-			char c = str.charAt(index);
-			if(c<'0' || c>'9')
-				break;
-			
-			num = num*10 + (int)(c-'0');
-			if(num>Integer.MAX_VALUE){	//overflow
-				if(neg)
-					return Integer.MIN_VALUE;
-				else
-					return Integer.MAX_VALUE;
-			}		
-		}
+        long num=0;
+        int index=0;
         
-		return (int)(neg? -num: num);
+        str = str.trim();
+        if(str.charAt(index)=='-'){
+            index++;
+            neg=true;
+        }else if(str.charAt(index)=='+'){
+            index++;   
+        }
+        
+        for(; index<str.length(); index++){
+            char c = str.charAt(index);
+            if(c<'0' || c>'9')
+                break;
+            
+            num = num*10 + (int)(c-'0');
+            if(num>Integer.MAX_VALUE){  //overflow
+                if(neg)
+                    return Integer.MIN_VALUE;
+                else
+                    return Integer.MAX_VALUE;
+            }       
+        }
+        
+        return (int)(neg? -num: num);
     }
 }
-
