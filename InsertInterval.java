@@ -21,38 +21,38 @@ This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
  *     Interval(int s, int e) { start = s; end = e; }
  * }
  */
+ 
 public class Solution {
     public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
         // Start typing your Java solution below
         // DO NOT write main() function
         
         ArrayList<Interval> result = new ArrayList<Interval>();
-  	int newStart = newInterval.start;
-		int newEnd = newInterval.end;
+        int newStart = newInterval.start;
+        int newEnd = newInterval.end;
         boolean added = false;
-		
-		for(Interval v: intervals){
-			if(v.end < newStart){
-				result.add(v);
-			}else if(v.start > newEnd){
+        
+        for(Interval v: intervals){
+            if(v.end < newStart){
+                result.add(v);
+            }else if(v.start > newEnd){
                 if(!added){
                     result.add(new Interval(newStart, newEnd));
-					added = true;
-				}
-				result.add(v);
-    	    }else{
-				if(v.start < newStart)
-					newStart = v.start;
-				if(v.end > newEnd)
-					newEnd = v.end;
-			}
-		}
-		if(!added){
-			result.add(new Interval(newStart, newEnd));
-			added = true;
-		}
-		
-		return result;
-	}
+                    added = true;
+                }
+                result.add(v);
+            }else{
+                if(v.start < newStart)
+                    newStart = v.start;
+                if(v.end > newEnd)
+                    newEnd = v.end;
+            }
+        }
+        if(!added){
+            result.add(new Interval(newStart, newEnd));
+            added = true;
+        }
+        
+        return result;
+    }
 }
-
