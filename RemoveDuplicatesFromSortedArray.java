@@ -20,7 +20,7 @@ public class Solution {
         int last=a[0];
         int endIndex=0;
         
-        for(int i=0; i<a.length; i++){
+        for(int i=1; i<a.length; i++){
             if(a[i]!=last){
                 endIndex++;
                 a[endIndex] = a[i];
