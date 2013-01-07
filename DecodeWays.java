@@ -66,8 +66,8 @@ public class Solution {
         //Check if the input is valid. If there are undecodable codes, then return
         for(int i=0; i<len; i++){       
             str[i] = s.charAt(i)-'0';
-            
-            if(i>0 && str[i] == 0 && (str[i-1] != 1 && str[i-1] != 2))  //for 0, it just can show in 10 or 20. For other case all wrong, like 00, 30, 40...
+            //for 0, it just can show in 10 or 20. For other case all wrong, like 00, 30, 40...
+            if(i>0 && str[i] == 0 && (str[i-1] != 1 && str[i-1] != 2))  
                 return 0;
         }
         
