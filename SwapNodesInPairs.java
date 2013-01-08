@@ -40,7 +40,7 @@ public class Solution {
             
             if(pre==null)
                 head = n2;
-            else    //Node here! After each swap, you have to relink the swaped part
+            else    //Note here! After each swap, you have to relink the swaped part
                 pre.next = n2;
             
             pre = n1;
