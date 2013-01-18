@@ -47,3 +47,48 @@ public class Solution {
     }
     
 }
+
+
+/* Use heap */
+public class Solution {
+    
+    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        
+        if(lists.size()==0)
+            return null;
+        
+        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(lists.size(), new Comparator<ListNode>(){
+            public int compare(ListNode n1, ListNode n2){
+            	return n1.val - n2.val;
+            }
+        });
+        
+        for(ListNode node: lists){
+        	if(node!=null){
+        		heap.offer(node);
+            }
+        }
+        
+        ListNode head=null, tail=null;
+        while(!heap.isEmpty()){
+        	ListNode n  = heap.poll();
+        	if(head==null){
+        		head = n;
+            }else{
+        	    tail.next = n;
+            }
+        
+        	if(n.next!=null){
+        		heap.add(n.next);
+            }
+        
+            tail = n;
+            tail.next = null;
+        }
+                
+        return head;
+    }
+    
+}
