@@ -61,27 +61,27 @@ public class Solution {
         
         PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(lists.size(), new Comparator<ListNode>(){
             public int compare(ListNode n1, ListNode n2){
-            	return n1.val - n2.val;
+                return n1.val - n2.val;
             }
         });
         
         for(ListNode node: lists){
-        	if(node!=null){
-        		heap.offer(node);
+            if(node!=null){
+                heap.offer(node);
             }
         }
         
         ListNode head=null, tail=null;
         while(!heap.isEmpty()){
-        	ListNode n  = heap.poll();
-        	if(head==null){
-        		head = n;
+            ListNode n  = heap.poll();
+            if(head==null){
+                head = n;
             }else{
-        	    tail.next = n;
+                tail.next = n;
             }
         
-        	if(n.next!=null){
-        		heap.add(n.next);
+            if(n.next!=null){
+                heap.add(n.next);
             }
         
             tail = n;
@@ -90,5 +90,5 @@ public class Solution {
                 
         return head;
     }
-    
+
 }
