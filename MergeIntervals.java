@@ -47,7 +47,7 @@ public class Solution {
                 }
             }           
             
-            result.add(new Interval(inter.start, end));
+            result.add(new Interval(start, end));
             
             index = last+1;    
         }
