@@ -49,7 +49,7 @@ public class Solution {
     }
 }
 
-//use hash table to reduce the time of checking duplicate
+//use hash to reduce the time of checking duplicate
 public class Solution {
     
     public int lengthOfLongestSubstring(String s) {
