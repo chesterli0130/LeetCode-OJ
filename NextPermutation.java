@@ -52,3 +52,54 @@ public class Solution {
     
 }
 
+/*O(N)*/
+public class Solution {
+    
+    public void nextPermutation(int[] num) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        
+        //find the number larger than the previous number
+        int index = num.length-1;
+        for(; index>0; index--){
+            if(num[index] > num[index-1]){                
+                break;
+            }
+        }
+        
+        //if index==0, then the array is in decreaing order
+        if(index!=0){
+            
+            int n = num[index-1];
+            int i;
+            //find the first element larger than n
+            //note that the subarray from index to length-1 is in decreasing order
+            for(i=num.length-1; i>=index; i--){
+                if(num[i]>n){
+                    break;
+                }
+            }
+            
+            swap(num, index-1, i);
+        }
+        
+        //then we may just reverse 
+        reverse(num, index, num.length-1);                    
+    }
+    
+    public void swap(int[] a, int i, int j){
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+    
+    public void reverse(int[] a, int start, int end){
+        while(start<end){
+            swap(a, start, end);
+            start++;
+            end--;
+        }
+    }
+    
+}
+
