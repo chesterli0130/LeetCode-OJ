@@ -1,7 +1,3 @@
-/*
-Divide two integers without using multiplication, division and mod operator.
-*/
-
 public class Solution {
     public int divide(int dividend, int divisor) {
         
@@ -26,11 +22,11 @@ public class Solution {
                 return 1 + divide(dividend + b, divisor);   //if postive, then add 1
             }
         }
-        
-        int product = b;
+              
         int result = 0;
-        while (a >= b) {    
+        while (a >= b) {   
             
+            int product = b;
             int q = 1;  //quotient. If a is larger than b, the quotient is at least equals to 1
             while (a-product >= product) {  //it means a >= product*2 (or <<1). if the next round the product would be larger than a, then stop. Use minus can avoid overflow
                 q = q << 1;     // it equals to *2, we try the quotient times 2 for each round. like 1, 2, 4, 8, 16
@@ -38,7 +34,6 @@ public class Solution {
             }
             
             a = a - product;    //if a is still larger than b, then from 1 try again
-            product = b;
             result += q;
                        
         }
