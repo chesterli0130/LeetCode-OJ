@@ -36,7 +36,7 @@ public class Solution {
             w.second.val = temp;
         }
     }
-    //use recursion, so the space would be O(lgN), where N is the number of node.
+    //use recursion, so the space would be O(logN), where N is the number of node.
     //It's better than O(N), although still not O(1)
     public void recover(TreeNode root, Wrapper w){
         if(root==null)
