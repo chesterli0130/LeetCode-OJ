@@ -40,3 +40,55 @@ public class Solution {
 }
 
 
+/*O(n^2)*/
+public class Solution {
+    
+    
+    public String longestPalindrome(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        
+        int max=0;
+        String ret = "";
+        
+        //odd number of chars
+        for(int i=0; i<s.length(); i++){
+            int left=i-1, right=i+1;
+            
+            while(left>=0 && right<s.length()){
+                if(s.charAt(left)!=s.charAt(right))
+                    break;
+                left--;
+                right++;
+            }
+            
+            int len = right-(left+1);
+            if(len > max){
+                max = len;
+                ret = s.substring(left+1, right);
+            }
+        }
+        
+        //even number of chars
+        for(int i=0; i<s.length()-1; i++){
+            int left=i, right=i+1;
+            
+            while(left>=0 && right<s.length()){
+                if(s.charAt(left)!=s.charAt(right))
+                    break;
+                left--;
+                right++;
+            }
+            
+            int len = right-(left+1);
+            
+            if(len > max){
+                max = len;
+                ret = s.substring(left+1, right);
+            }
+        }
+        
+        return ret;
+    }
+       
+}
