@@ -20,25 +20,25 @@ public class Solution {
         }
         
         //DP: find all possible start index with the end index
-		ArrayList<ArrayList<Integer>> set = new ArrayList<ArrayList<Integer>>();
-		for(int i=0; i<=s.length(); i++) {
-			ArrayList<Integer> starts = new ArrayList<Integer>();
-			set.add(starts);
-		}
+	ArrayList<ArrayList<Integer>> set = new ArrayList<ArrayList<Integer>>();
+	for(int i=0; i<=s.length(); i++) {
+		ArrayList<Integer> starts = new ArrayList<Integer>();
+		set.add(starts);
+	}
 		
-		set.get(0).add(0); //add anything, prevent from size equals to 0	
+	set.get(0).add(0); //add anything, prevent from size equals to 0	
         for (int end=1; end<=s.length(); end++) {
             for (int start=Math.max(0, end-maxLen); start<end; start++) {
                 String word = s.substring(start, end);
-				if (set.get(start).size()!=0 && dict.contains(word)) {          
-					set.get(end).add(start);
+		if (set.get(start).size()!=0 && dict.contains(word)) {          
+			set.get(end).add(start);
                 }
             }
         }
         
         //DFS: assemble all possible words using all pairs of start and end
-		ArrayList<String> result = new ArrayList<String>();
-		getStrings(s, set, s.length(), new ArrayList<String>(), result);
+	ArrayList<String> result = new ArrayList<String>();
+	getStrings(s, set, s.length(), new ArrayList<String>(), result);
 		
         return result;
     }
