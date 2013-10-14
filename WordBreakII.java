@@ -43,25 +43,25 @@ public class Solution {
         return result;
     }
 	
-	public void getStrings(String s, ArrayList<ArrayList<Integer>> set, int end, ArrayList<String> arr, ArrayList<String> result) {
+    public void getStrings(String s, ArrayList<ArrayList<Integer>> set, int end, ArrayList<String> arr, ArrayList<String> result) {
 		
-		//base case
-		if(end == 0) {
-			StringBuilder buff = new StringBuilder();
-			for(int i=arr.size()-1; i>=0; i--) {
-				buff.append(arr.get(i) + " ");
-			}
-			result.add(buff.toString().trim());
-			return;
+	//base case
+	if(end == 0) {
+		StringBuilder buff = new StringBuilder();
+		for(int i=arr.size()-1; i>=0; i--) {
+			buff.append(arr.get(i) + " ");
 		}
-		
-		for(int start : set.get(end)) {
-			String word = s.substring(start, end);
-			arr.add(word);
-			getStrings(s, set, start, arr, result);
-			arr.remove(arr.size()-1);
-		}
+		result.add(buff.toString().trim());
+		return;
 	}
+	
+	for(int start : set.get(end)) {
+		String word = s.substring(start, end);
+		arr.add(word);
+		getStrings(s, set, start, arr, result);
+		arr.remove(arr.size()-1);
+	}
+    }
 }
 
 
