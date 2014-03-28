@@ -4,31 +4,33 @@ Implement int sqrt(int x).
 Compute and return the square root of x.
 */
 
+// square will cause overflow, use long
 public class Solution {
     public int sqrt(int x) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+         if (x<0){
+             return-1;
+         }
+         
+         // in case of x==1
+        long high=x/2+1;
+        long low=0;
         
-        if(n<=0)
-            return -1; //throw exception!
-        
-        int low=0, high=x;
-        long mid = (low+high)/2;
-        
-        while(high>=low){
-            if(mid*mid > n){
-                high = mid;
-                if((mid-1)*(mid-1) < n)
-                    return mid-1;
-            }else if(mid*mid < n){
-                low = mid;
-                if((mid+1)*(mid+1) > n)
-                    return mid;
-            }else 
-                return mid;
+        while(low<=high){
+            long mid=low+(high-low)/2;
+            
+            long sq=mid*mid;
+            
+            if (sq==(long)x){
+                return (int)mid;
+            }
+            else if (sq<(long)x){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
         }
-        
-        return mid;
+        return (int)high;
     }
 }
 
